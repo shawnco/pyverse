@@ -14,11 +14,17 @@ from classes.network.packet import *
 from classes.network.packetcollection import *
 from classes.network.routedpacket import *
 from classes.network.router import *
+from classes.network.snifferpacket import *
 from classes.network.transceiver import *
 from classes.network.transceivercollection import *
 
 # Species and constructed objects
+from classes.objects.database import *
+from classes.objects.databasestation import *
+from classes.objects.relay import *
 from classes.objects.starbase import *
+from classes.objects.species import *
+from classes.objects.station import *
 
 pc = PacketCollection()
 pc.add_packet(Packet('', 1, 'first'))
