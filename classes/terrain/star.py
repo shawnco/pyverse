@@ -4,7 +4,7 @@ Stars come in three colors: red, yellow, and blue
 They also come in three sizes: dwarf, main, and giant
 Color and size is determined at generation
 '''
-#from classes.terrain.planetcollection import *
+from classes.terrain.planetcollection import *
 import pygame
 from constants import *
 

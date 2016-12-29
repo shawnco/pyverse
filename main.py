@@ -1,11 +1,24 @@
+# Imports used everywhere
 from constants import *
-from opensimplex import *
-from classes.network.packet import *
-from classes.network.packetcollection import *
+import opensimplex
 import pygame
 import sys
+
+# Terrain imports
+from classes.terrain.galaxy import *
+from classes.terrain.planet import *
 from classes.terrain.star import *
-from classes.test import *
+
+# Networking imports
+from classes.network.packet import *
+from classes.network.packetcollection import *
+from classes.network.routedpacket import *
+from classes.network.router import *
+from classes.network.transceiver import *
+from classes.network.transceivercollection import *
+
+# Species and constructed objects
+from classes.objects.starbase import *
 
 pc = PacketCollection()
 pc.add_packet(Packet('', 1, 'first'))
@@ -15,18 +28,15 @@ pc.add_packet(Packet('', 3, 'third'))
 pc.add_packet(Packet('', 1, 'third'))
 pc.add_packet(Packet('', 3, 'fourth'))
 
-t = Test()
-#to_send = pc.get_packets(1)
-
 # Setup for the Pygame window
 pygame.init()
 pygame.display.set_caption("No Man's Py")
-screen.fill((255, 255, 255))
 
-star = Star(2,2,'red',500,500)
+starbase = Starbase(1,500,500)
 running = True
 while running:
-    star.update()
+    screen.fill(COLORS['white'])
+    starbase.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

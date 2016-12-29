@@ -2,7 +2,7 @@
 A planet collection which is simply a way to handle and iterate over planets in a system
 '''
 
-from terrain.planet import *
+from classes.terrain.planet import *
 
 class PlanetCollection:
     '''
