@@ -15,6 +15,8 @@ from classes.network.packetcollection import *
 from classes.network.routedpacket import *
 from classes.network.router import *
 from classes.network.snifferpacket import *
+from classes.network.terminal import *
+from classes.network.terminalcollection import *
 from classes.network.transceiver import *
 from classes.network.transceivercollection import *
 
@@ -38,11 +40,20 @@ pc.add_packet(Packet('', 3, 'fourth'))
 pygame.init()
 pygame.display.set_caption("No Man's Py")
 
-starbase = Starbase(1,500,500)
+# The galaxy object that does all the updates
+Galaxy = Galaxy('')
+
+Galaxy.add_object(Planet('terran', 100, 100))
+Galaxy.add_object(Starbase(1,500,500))
+
+# Add a starbase to it.
+
+
 running = True
 while running:
     screen.fill(COLORS['white'])
-    starbase.update()
+    Galaxy.update()
+#    starbase.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
