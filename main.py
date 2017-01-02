@@ -44,8 +44,8 @@ pygame.display.set_caption("No Man's Py")
 # The galaxy object that does all the updates
 Galaxy = Galaxy('', 10000, 10000)
 
-Galaxy.add_object(Planet('terran', 100, 100))
-Galaxy.add_object(Starbase(1,500,500))
+Galaxy.add_object(Planet('PLAN-001','terran', 100, 100))
+Galaxy.add_object(Starbase('SB-001',600,600))
 
 # Add a starbase to it.
 

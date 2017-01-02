@@ -22,7 +22,13 @@ class Galaxy:
     Adds an object to the entity collection
     '''
     def add_object(self, obj):
+        # Determine grid location for object
+        row = math.ceil(obj.x/CELL)
+        col = math.ceil(obj.y/CELL)
+        print("{} will be put in ({},{})".format(obj.id, row, col))
+        
         self.entities.add(obj)
+        self.grid.add_object(obj, row, col)
     
     '''
     Runs the L-system generator to create a new planet
@@ -52,5 +58,6 @@ class Galaxy:
     Calls the update function on all objects in the collection
     '''
     def update(self):
+        self.grid.update()
         self.entities.update()
         

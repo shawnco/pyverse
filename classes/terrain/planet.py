@@ -11,8 +11,9 @@ class Planet(pygame.sprite.Sprite):
     '''
     Create the planet object by giving its type and location
     '''
-    def __init__(self, type, x, y):
+    def __init__(self, id, type, x, y):
         super(Planet, self).__init__()
+        self.id = id
         self.max_crystal = PLANETS[type]['max_crystal']
         self.max_gas = PLANETS[type]['max_gas']
         self.max_metal = PLANETS[type]['max_metal']

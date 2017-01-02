@@ -24,31 +24,17 @@ class Grid:
         # Get the rows and cols of the grid
         rows = math.ceil(width/CELL)
         cols = math.ceil(height/CELL)
-        mid = CELL/2
         
         # Create the grid
         for r in range(rows):
             for c in range(cols):
-                self.grid[(r, c)] = {
-                    'midpt': (CELL * r + mid, CELL * c + mid),
-                    'Planet': [],
-                    'Star': [],
-                    'Starbase': [],
-                    'Station': [],
-                    'Starship': []
-                }
-                
-        # TESTING - do distances work?
-        print('hey');
-        print(self.check_in_bounds(0,0,0,0))
+                self.grid[(r, c)] = {}
     
     '''
     Adds a new object to the grid
     '''
-    def add_object(self, type, obj, x, y):
-        row = math.ceil(x/CELL)
-        col = math.ceil(y/CELL)
-        self.grid[(row, col)][type].append(obj)
+    def add_object(self, obj, row, col):
+        self.grid[(row, col)][obj.id] = obj
         
     '''
     Checks if an object is still in bounds.
@@ -60,15 +46,27 @@ class Grid:
     '''
     Removes and object from the grid
     '''
-    def remove_object(self, type, obj, x, y):
-        row = math.ceil(x/CELL)
-        col = math.ceil(y/CELL)
-        self.grid[(row, col)][type].remove(obj)
+    def remove_object(self, obj, row, col):
+        del self.grid[(row, col)][obj.id]
+        
+    '''
+    Checks all object positions to see if they need to be updated in the grid.
+    '''
+    def update(self):
+        for g in self.grid:
+            for obj in self.grid[g]:
+                if self.check_in_bounds(self.grid[g][obj].x, self.grid[g][obj].y, g[0], g[1]):
+                    self.update_object(self.grid[g][obj], g[0], g[1])
+        
         
     '''
     Moves the object to a new grid
     '''
-    def update_object(self, type, obj, old_x, old_y, new_x, new_y):
-        self.remove_object(type, obj, old_x, old_y)
-        self.add_object(type, obj, new_x, new_y)
+    def update_object(self, obj, old_x, old_y):
+        # Calculate the new grid location
+        new_x = math.ceil(old_x/CELL)
+        new_y = math.ceil(old_y/CELL)
+        
+        self.remove_object(obj, old_x, old_y)
+        self.add_object(obj, new_x, new_y)
         
