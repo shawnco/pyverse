@@ -23,6 +23,7 @@ from classes.network.transceivercollection import *
 # Species and constructed objects
 from classes.objects.database import *
 from classes.objects.databasestation import *
+from classes.objects.grid import *
 from classes.objects.relay import *
 from classes.objects.starbase import *
 from classes.objects.species import *
@@ -41,7 +42,7 @@ pygame.init()
 pygame.display.set_caption("No Man's Py")
 
 # The galaxy object that does all the updates
-Galaxy = Galaxy('')
+Galaxy = Galaxy('', 10000, 10000)
 
 Galaxy.add_object(Planet('terran', 100, 100))
 Galaxy.add_object(Starbase(1,500,500))

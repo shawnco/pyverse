@@ -1,8 +1,11 @@
 '''
 This file simply stores constants used throughout the program
 '''
+import math
 import pygame
 
+CELL = 500.0
+SQRT2 = math.sqrt(2)
 screen = pygame.display.set_mode((1250, 750))
 
 COLORS = {

@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/objects/species.py</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/terrain/galaxy.py</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/objects/grid.py</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/network/transceiver.py</file>
             <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/main.py</file>
-            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/objects/station.py</file>
-            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/objects/databasestation.py</file>
-            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/objects/database.py</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/constants.py</file>
         </group>
     </open-files>
 </project-private>

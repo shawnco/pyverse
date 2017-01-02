@@ -2,14 +2,21 @@
 The Galaxy object encapsulates the entire program. It also handles loading and saving of the save files.
 '''
 import pygame
+from constants import *
+from classes.objects.grid import *
 
 class Galaxy:
     '''
     Creates a new galaxy by passing it the savefile
     '''
-    def __init__(self, save_file):
+    def __init__(self, save_file, width, height):
         # This list holds all the top-level 
         self.entities = pygame.sprite.Group()
+        self.width = width
+        self.height = height
+        
+        # The grid, which will eventually hold all objects.
+        self.grid = Grid(self.width, self.height)
         
     '''
     Adds an object to the entity collection
