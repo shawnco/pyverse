@@ -22,8 +22,8 @@ class Grid:
         self.grid = {}
         
         # Get the rows and cols of the grid
-        rows = math.ceil(width/CELL)
-        cols = math.ceil(height/CELL)
+        rows = math.floor(width/CELL)
+        cols = math.floor(height/CELL)
         
         # Create the grid
         for r in range(rows):
@@ -64,8 +64,8 @@ class Grid:
     '''
     def update_object(self, obj, old_x, old_y):
         # Calculate the new grid location
-        new_x = math.ceil(old_x/CELL)
-        new_y = math.ceil(old_y/CELL)
+        new_x = math.floor(old_x/CELL)
+        new_y = math.floor(old_y/CELL)
         
         self.remove_object(obj, old_x, old_y)
         self.add_object(obj, new_x, new_y)

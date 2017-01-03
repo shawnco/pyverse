@@ -5,7 +5,7 @@ Their type determines their size and color
 '''
 import pygame
 from constants import *
-from classes.network.transceiver import *
+from classes.network.transceivercollection import *
 
 class Planet(pygame.sprite.Sprite):
     '''
@@ -19,17 +19,15 @@ class Planet(pygame.sprite.Sprite):
         self.max_metal = PLANETS[type]['max_metal']
         self.size = PLANETS[type]['size']
         self.species = ''
-        self.transceivers = []
+        self.transceivers = TransceiverCollection()
+        self.transceivers.add_transceiver(Transceiver(x,y))
         self.type = type
         self.x = x
         self.y = y
-        
-        # For the time being a planet will have a tranceiver by default
-        # This should be changed later. Random worlds don't have tech on them
-        self.transceiver = Transceiver()
         
     '''
     Draw the planet on each update
     '''
     def update(self):
         pygame.draw.circle(screen, PLANETS[self.type]['color'], (self.x, self.y), PLANETS[self.type]['size'])
+        self.transceivers.update()

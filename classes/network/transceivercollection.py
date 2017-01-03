@@ -8,8 +8,7 @@ class TransceiverCollection:
     '''
     Creates an empty transceiver collection
     '''
-    def __init__(self, id):
-        self.id
+    def __init__(self):
         self.transceivers = []
         
     '''
@@ -26,3 +25,10 @@ class TransceiverCollection:
             if t.id == id:
                 return t
         return False
+    
+    '''
+    Call the update for each transceiver
+    '''
+    def update(self):
+        for t in self.transceivers:
+            t.update()

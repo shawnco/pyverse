@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/terrain/galaxy.py</file>
             <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/objects/grid.py</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/network/transceivercollection.py</file>
             <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/network/transceiver.py</file>
             <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/main.py</file>
-            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/constants.py</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/network/router.py</file>
+            <file>file:/C:/Program%20Files%20(x86)/Ampps/www/pyverse/classes/terrain/planet.py</file>
         </group>
     </open-files>
 </project-private>

@@ -23,8 +23,8 @@ class Galaxy:
     '''
     def add_object(self, obj):
         # Determine grid location for object
-        row = math.ceil(obj.x/CELL)
-        col = math.ceil(obj.y/CELL)
+        row = math.floor(obj.x/CELL)
+        col = math.floor(obj.y/CELL)
         print("{} will be put in ({},{})".format(obj.id, row, col))
         
         self.entities.add(obj)
