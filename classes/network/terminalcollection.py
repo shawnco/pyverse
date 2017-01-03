@@ -34,3 +34,22 @@ class TerminalCollection:
             for t in self.terminals:
                 if p.dest == t.id:
                     t.receive_packet(p)
+                    
+    '''
+    Get terminal by ID
+    '''
+    def get_terminal_by_id(self, id):
+        for t in self.terminals:
+            if t.id == id:
+                return t
+        return False
+                    
+    '''
+    Gets terminal by name
+    '''
+    def get_terminal_by_name(self, name):
+        for t in self.terminals:
+            if t.name == name:
+                return t
+        return False
+            

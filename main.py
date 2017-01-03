@@ -5,7 +5,8 @@ import pygame
 import sys
 
 # Terrain imports
-from classes.terrain.galaxy import *
+#from classes.terrain.galaxy import *
+from classes.terrain.galaxygrid import *
 from classes.terrain.planet import *
 from classes.terrain.star import *
 
@@ -23,7 +24,7 @@ from classes.network.transceivercollection import *
 # Species and constructed objects
 from classes.objects.database import *
 from classes.objects.databasestation import *
-from classes.objects.grid import *
+#from classes.objects.grid import *
 from classes.objects.relay import *
 from classes.objects.starbase import *
 from classes.objects.species import *
@@ -42,19 +43,24 @@ pygame.init()
 pygame.display.set_caption("No Man's Py")
 
 # The galaxy object that does all the updates
-Galaxy = Galaxy('', 10000, 10000)
+Galaxy = GalaxyGrid('', 10000, 10000)
 
-Galaxy.add_object(Planet('PLAN-001','terran', 100, 100))
-Galaxy.add_object(Starbase('SB-001',400,400))
+Galaxy.add(Planet('PLAN-001','terran', 100, 100))
+Galaxy.add(Starbase('SB-001',400,400))
 
-# Add a starbase to it.
+# Add a terminal to our packet
+Galaxy.get('PLAN-001').get_transceiver(0).add_terminal(Terminal(1, 'VULCAN-001'))
 
 
 running = True
 while running:
     screen.fill(COLORS['white'])
     Galaxy.update()
-#    starbase.update()
+    
+    # Put a packet on a terminal in a planet
+    Galaxy.get('PLAN-001').get_transceiver(0).get_terminal_by_name('VULCAN-001').create_packet('SB-001', 'hello')
+    print(Galaxy.get('PLAN-001').get_transceiver(0).get_terminal_by_name('VULCAN-001').packets)
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

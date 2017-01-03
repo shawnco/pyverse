@@ -25,6 +25,13 @@ class Planet(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         
+        
+    '''
+    Retrieve a transceiver by ID 
+    '''
+    def get_transceiver(self, index):
+        return self.transceivers.get_transceiver(index)
+        
     '''
     Draw the planet on each update
     '''

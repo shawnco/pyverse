@@ -18,13 +18,10 @@ class TransceiverCollection:
         self.transceivers.append(t)
         
     '''
-    Fetches the transceiver with the given id
+    Fetches the transceiver with the given index
     '''
-    def get_transceiver(self, id):
-        for t in self.transceivers:
-            if t.id == id:
-                return t
-        return False
+    def get_transceiver(self, i):
+        return self.transceivers[i]
     
     '''
     Call the update for each transceiver
