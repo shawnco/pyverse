@@ -19,7 +19,7 @@ class Starbase(pygame.sprite.Sprite, Router):
         self.x = x
         self.y = y
         self.current_range = 0
-        self.max_range = 400
+        self.max_range = 500
         self.terminals = TerminalCollection()
         
         # A starbase by default has 5 terminals
@@ -35,5 +35,5 @@ class Starbase(pygame.sprite.Sprite, Router):
         
         super(Router, self).__init__()
         
-    def update(self):
-        super(pygame.sprite.Sprite, self).update()
+    def update(self, neighbors):
+        super(pygame.sprite.Sprite, self).update(neighbors)

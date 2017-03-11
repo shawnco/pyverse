@@ -50,16 +50,12 @@ Galaxy.add(Starbase('SB-001',400,400))
 
 # Add a terminal to our packet
 Galaxy.get('PLAN-001').get_transceiver(0).add_terminal(Terminal(1, 'VULCAN-001'))
-
+Galaxy.get('PLAN-001').get_transceiver(0).get_terminal_by_name('VULCAN-001').create_packet('SB-001', 'hello')
 
 running = True
 while running:
     screen.fill(COLORS['white'])
     Galaxy.update()
-    
-    # Put a packet on a terminal in a planet
-    Galaxy.get('PLAN-001').get_transceiver(0).get_terminal_by_name('VULCAN-001').create_packet('SB-001', 'hello')
-    print(Galaxy.get('PLAN-001').get_transceiver(0).get_terminal_by_name('VULCAN-001').packets)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

@@ -2,6 +2,7 @@
 A class describing objects that are able tou receive and transmit packets.
 '''
 from constants import *
+import math
 import pygame
 from classes.network.packetcollection import *
 
@@ -10,7 +11,7 @@ class Router:
         self.packets = PacketCollection()
         self.neighbors = []
         self.current_range = 0
-        self.max_range = 400
+        self.max_range = 500
         
         # Cooldown for smoother transmission display
         self.current_cooldown = 0
@@ -29,6 +30,12 @@ class Router:
         self.packets.add_packet(packet)
         
     '''
+    Calculate the distance between the objects
+    '''
+    def distance(self, obj):
+        return math.sqrt((self.x - obj.x)**2 + (self.y - obj.y)**2)
+        
+    '''
     Retrieve all packets with the given destination.
     '''
     def get_packets(self, dest):
@@ -37,11 +44,20 @@ class Router:
     '''
     Display the router object
     '''
-    def update(self):
+    def update(self, neighbors):
         pygame.draw.circle(screen, COLORS['blue'], (self.x, self.y), 100)
         
         # Display the transmission range
-        pygame.draw.circle(screen, COLORS['black'], (self.x, self.y), self.current_range+1, 1)      
+        pygame.draw.circle(screen, COLORS['black'], (self.x, self.y), self.current_range+1, 1)   
+        
+        # Show if any neighbors can be transmitted to
+        if self in neighbors:
+            neighbors.remove(self)
+        for n in neighbors:
+            if self.distance(n) < self.current_range:
+                # What I actually want to do is grab packets for this neighbor and send them there.
+                pass
+            
         
         # Update transmission range after some iterations
         if self.current_cooldown == self.cooldown:

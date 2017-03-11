@@ -12,12 +12,29 @@ class Terminal:
         self.id = id
         self.name = name
         self.packets = []
+
+    '''
+    Add a packet to the collection
+    '''
+    def add_packet(self, packet):
+        self.packets.append(packet);        
         
     '''
     Writes a packet and stores it to the packet queue to be picked up by the transceiver or router
     '''
     def create_packet(self, dest, msg):
         self.packets.append(Packet(self.id, dest, msg))
+
+    '''
+    Finds, removes, and returns all packets with a specific destination
+    '''
+    def get_packets(self, dest):
+        output = []
+        for p in range(len(self.packets)):
+            if self.packets[p].dest == dest:
+                output.append(self.packets[p])
+                self.packets.pop(p)
+        return output           
         
     '''
     Receives a packet. For now it'll just write to the console the sender and contents.
@@ -31,4 +48,4 @@ class Terminal:
     def transmit_packets(self):
         packets = self.packets
         self.packets = []
-        return packets
+        return packets     

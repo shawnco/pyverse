@@ -3,6 +3,9 @@ This class combines the concepts of a galaxy and a grid into one. This makes it 
 '''
 from constants import *
 import math
+from classes.network.router import *
+from classes.network.transceiver import *
+from classes.terrain.planet import *
 
 class GalaxyGrid:
     '''
@@ -60,10 +63,25 @@ class GalaxyGrid:
     def update(self):
         for g in self.grid:
             for obj in self.grid[g]:
-                #print(self.grid[g][obj].id, self.grid[g][obj].x, self.grid[g][obj].y)
-                self.grid[g][obj].update()
-                if self.check(self.grid[g][obj], g[0], g[1]):
-                    o = self.grid[g][obj]
+                o = self.grid[g][obj]
+                # If it's a transmitting type of object, we need to send it the neighbors
+                if isinstance(o, (Router)):
+                    # Determine which grid squares the transmission reaches
+                    length = math.ceil(o.current_range / CELL)
+                    
+                    # Assemble a list of all objects in those grid squares
+                    neighbors = []
+                    for r in range(g[0] - length, g[0] + length):
+                        for c in range(g[1] - length, g[1] + length):
+                            if (r, c) in self.grid:
+                                for obj in self.grid[(r, c)]:
+                                    neighbors.append(self.grid[(r,c)][obj])
+                    
+                    # Pass it to the object.
+                    o.update(neighbors)
+                else:
+                    o.update()
+                if self.check(o, g[0], g[1]):
                     #print("Obj {} needs relocation".format(o.id))
                     self.remove(o, g[0], g[1])
                     self.add(o)

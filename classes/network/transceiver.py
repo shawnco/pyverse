@@ -4,16 +4,14 @@ A Transceiver is a device that allows communication between terminals and router
 import pygame
 from constants import *
 from classes.network.packet import *
-from classes.network.packetcollection import *
-from classes.network.terminalcollection import *
 
 class Transceiver:
     '''
     Creates a transceiver
     '''
     def __init__(self, x, y):
-        self.packets = PacketCollection()
-        self.terminals = TerminalCollection()
+        self.packets = []
+        self.terminals = []
         self.x = x
         self.y = y
         self.current_cooldown = 0
